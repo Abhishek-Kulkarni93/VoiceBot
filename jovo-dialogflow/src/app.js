@@ -17,7 +17,7 @@ app.use(
   new GoogleAssistant(),
   new Dialogflow(),
   new JovoDebugger(),
-  new Firestore(),  
+  // new Firestore(),  
 );
 
 // ------------------------------------------------------------------
@@ -31,7 +31,7 @@ app.setHandler({
   },
 
   HelloWorldIntent() {
-    this.ask("Hello World! What's your name?", 'Please tell me your name.');
+    this.ask("Hello Voice Bot! What's your name?", 'Please tell me your name.');
   },
 
   MyNameIsIntent() {

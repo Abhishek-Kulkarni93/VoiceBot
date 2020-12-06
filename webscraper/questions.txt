@@ -1,0 +1,18 @@
+Questionnaire:
+1. What are the office hours for the exam office? (For today/tomorrow/specific day or date)
+2. Should we have an appointment prior to visiting the exam office? How can I schedule an appointment?
+3. Where is the exam office located? Where is the FIN dept exam office located?
+4. What is the email id for contacting the exam office? What is the email id of FIN dept?
+5. What is the phone number/fax for the exam office?
+6. What is the registration period for the exams?
+7. Where will the exam (for particular sub) be held?
+8. What time will the exam (for particular sub) take place? When will it be held?
+9. Where can I find the form for Thesis/Project registration?
+10. Where will the exam results be posted?
+11. What are the deadlines if we have failed an exam?
+12. Who are the current members of the exam board?
+13. How can I contact the members of the exam board?
+14. What/where are the module lists for DE/DKE?
+15. How many credits are needed for a specific module? (For DE/DKE)
+16. When can I register/deregister from an exam for a particular exam? (Login is required - how do we proceed?)
+As the project proceeds, we will be adding several more questions.

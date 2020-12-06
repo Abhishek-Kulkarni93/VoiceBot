@@ -4,11 +4,7 @@ from mysql.connector.constants import ClientFlag
 config = {'user': 'root',
           'password': 'voiceBot',
           'host': '34.123.44.0',
-          'database': 'fin_examination_office',
-          'client_flags': [ClientFlag.SSL],
-          'ssl_ca': 'ssl_cert/server-ca.pem',
-          'ssl_cert': 'ssl_cert/client-cert.pem',
-          'ssl_key': 'ssl_cert/client-key.pem'}
+          'database': 'fin_examination_office'}
 
 connection = mysql.connector.connect(**config)
 cursor = connection.cursor()

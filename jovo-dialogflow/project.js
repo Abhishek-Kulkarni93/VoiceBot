@@ -3,6 +3,9 @@
 // ------------------------------------------------------------------
 
 module.exports = {
+  // alexaSkill: {
+  //   nlu: 'alexa',
+  // },
   googleAction: {
     nlu: 'dialogflow',
   },

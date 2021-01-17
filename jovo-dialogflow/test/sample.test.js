@@ -1,10 +1,11 @@
 'use strict';
 
+const { Alexa } = require('jovo-platform-alexa');
 const { GoogleAssistant } = require('jovo-platform-googleassistant');
 
 jest.setTimeout(500);
 
-for (const p of [new GoogleAssistant()]) {
+for (const p of [new Alexa(), new GoogleAssistant()]) {
   const testSuite = p.makeTestSuite();
 
   describe(`PLATFORM: ${p.constructor.name} INTENTS`, () => {

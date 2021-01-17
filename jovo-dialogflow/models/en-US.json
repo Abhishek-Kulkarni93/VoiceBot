@@ -3,29 +3,66 @@
   "intents": [
     {
       "name": "HelloWorldIntent",
-      "phrases": [
-        "hello",
-        "say hello",
-        "say hello world"
+      "phrases": ["hello", "say hello", "say hello world"]
+    },
+    {
+      "name": "FinDeptIntent",
+      "phrases": ["FIN", "finn", "Computer Science", "Informatics", "Informatic", "Computers"]
+    },
+    {
+      "name": "FeitDeptIntent",
+      "phrases": ["FEIT", "fight", "Electronics", "Electricals", "Electric"]
+    },
+    {
+      "name": "DeptInfoIntent",
+      "phrases": ["Opening hours", "Working hours", "When does it open?", "Office hours"],
+      "inputs": []
+    },
+    {
+      "name": "ContactInfoIntent",
+      "phrases": ["Contact information", "how can i contact them?", "what is their contact information?", "i want to contact them", "contact info"]
+    },
+    {
+      "name": "ContactEmailIntent",
+      "phrases": ["Email id", "what is their email address?", "what is their email id?", "how can i email them?", "i want to send an email to them", "i want to send a mail to them", "email", "email address", "email contact", "what is their email contact?"]
+    },
+    {
+      "name": "ContactPhoneIntent",
+      "phrases": ["Phone number", "what is their phone number?", "what is their mobile number?", "how can i call them?", "i want to speak to them", "i want to call them", "phone", "mobile", "mobile number", "what is their contact number?", "number"]
+    },
+    {
+      "name": "ContactFaxIntent",
+      "phrases": ["Fax number", "what is their fax number?", "how can i fax them?", "i want to fax them", "fax"]
+    },
+    {
+      "name": "ContactAddressIntent",
+      "phrases": ["Address", "what is their address?", "where are they located?", "location", "what is their mailing address?", "office", "office location", "office address", "what is their office address?", "where is their office?", "i want to go to their office", "physical location", "I want to visit them", "visit", "where can i visit them"]
+    },
+    {
+      "name": "DeptChangeIntent",
+      "phrases": ["Switch department", "switch departments", "change department", "change departments", "i want to change the department", "i want to change department", "i want to change departments", "i want to switch department", "i want to switch departments", "can i change department?", "can i change departments?", "can i choose another department?", "can i switch department?", "can i switch departments?"]
+    },
+    {
+      "name": "DeptOpenCloseIntent",
+      "phrases": ["{day}", "Is it open on {day}?", "Is it closed on {day}?"],
+      "inputs": [
       ]
     },
     {
-      "name": "MyNameIsIntent",
-      "phrases": [
-        "{name}",
-        "my name is {name}",
-        "i am {name}",
-        "you can call me {name}"
-      ],
+      "name": "MoreInfoYesIntent",
+      "phrases": ["Yes", "Yep", "Yup", "Ya", "Ya i do", "Ya i need more info", "Yes i do"],
       "inputs": [
-        {
-          "name": "name",
-          "type": {
-            "alexa": "AMAZON.US_FIRST_NAME",
-            "dialogflow": "@sys.given-name"
-          }
-        }
       ]
+    },
+    {
+      "name": "MoreInfoNoIntent",
+      "phrases": ["No", "Nope", "No i don't", "Nope i don't", "Na", "Na uh", "I don't need more info"],
+      "inputs": [
+      ]
+    },
+    {
+      "name": "ExamResultInfoIntent",
+      "phrases": ["Exam results", "results", "grades", "Where will the exam results be posted?", "where can i find my exam results?", "what is the link for exam results?", "my results", "my score", "how can i check my result?", "link to exam results", "where can i see my results?", "where can i see my exam results?", "where can i see my score?", "where can i find my grades?", "how can i check my grades?", "my grades", "are the results announced?"]
     }
   ],
   "alexa": {

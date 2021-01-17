@@ -1,6 +1,6 @@
-# Jovo Template: Hello World on Google Assistant
+# Jovo Template: Hello World
 
-This template contains a Jovo Sample Google Action, with a simple "Hello World!" greeting, asking for the user's name and returning a personalised message.
+This template contains a Jovo Sample Voice App with a simple "Hello World!" greeting, asking for the user's name and returning a personalised message. This is the default template for the `jovo new` command.
 
 ## Quick Start
 
@@ -13,7 +13,10 @@ $ npm install -g jovo-cli
 After successfully installing the Jovo CLI, you can install the template using one of the following commands:
 
 ```sh
-$ jovo new <directory> --template google
+$ jovo new <directory>
+
+## Alternative
+$ jovo new <directory> --template helloworld
 ```
 
 > Read more about `jovo new` [here](https://www.jovo.tech/marketplace/jovo-cli#jovo-new).
@@ -39,7 +42,7 @@ If you now go to the [Jovo Debugger](https://www.jovo.tech/marketplace/jovo-plug
 
 ## Next Steps
 
-Now that you got the template running on the Jovo Debugger, it is time to deploy your Google Action! You can find a tutorial for building a complete Google Action [here](https://www.jovo.tech/tutorials/google-action-tutorial-nodejs).
+Now that you got the template running on the Jovo Debugger, it is time to deploy your voice app! You can find a tutorial for building a complete Alexa skill [here](https://www.jovo.tech/tutorials/alexa-skill-tutorial-nodejs).
 
 To see what else you can do with the Jovo Framework, take a look at the [Jovo Documentation](https://www.jovo.tech/docs/).
 

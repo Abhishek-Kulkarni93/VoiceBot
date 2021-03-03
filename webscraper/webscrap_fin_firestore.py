@@ -90,5 +90,56 @@ def fin_exam_office_contact():
                 doc.set({'Fax No': fax}, merge=True)
     page.close()
 
-
 fin_exam_office_contact()
+
+# que 7 ,8 - examination plans
+
+
+def direct_links():
+    page = open('fin_exam_office_webpage.html', 'r')
+    a = bs4.BeautifulSoup(page, features='lxml')
+
+    primary_links = a.find_all('div', attrs={'id': 'primaer_nav_direktlinks_liste'})
+    # print(primary_links)
+
+    for i in range(len(primary_links)):
+        links = primary_links[i].find('ul', attrs={'class': 'level1'}).find_all('li')
+
+        for j in links:
+            if str(j).__contains__('The Faculty'):
+                print('The Faculty ' + 'https://www.inf.ovgu.de/' + j.a['href'])
+                doc.set({'Faculty': 'https://www.inf.ovgu.de/' + j.a['href']}, merge=True)
+            if str(j).__contains__('Research'):
+                print('Research ' + 'https://www.inf.ovgu.de/' + j.a['href'])
+                doc.set({'Research': 'https://www.inf.ovgu.de/' + j.a['href']}, merge=True)
+            if str(j).__contains__('International'):
+                print('International ' + 'https://www.inf.ovgu.de/' + j.a['href'])
+                doc.set({'International': 'https://www.inf.ovgu.de/' + j.a['href']}, merge=True)
+
+    secondary_links = a.find_all('div', attrs={'id': 'sekundaer_nav_links'})
+
+    # print(a)
+
+    for i in range(len(secondary_links)):
+        # print(a[i].find('ul', attrs={'class':'nav_links_5','id':'sekundaer_nav_links_min'}))
+
+        links = secondary_links[i].find('ul', attrs={'class': 'nav_links_5', 'id': 'sekundaer_nav_links_min'}).find_all('li')
+
+        for j in links:
+            if str(j).__contains__('About the Examination Office'):
+                print('About the Examination Office ' + 'https://www.inf.ovgu.de/' + j.a['href'])
+                doc.set({'About the Examination Office': 'https://www.inf.ovgu.de/' + j.a['href']}, merge=True)
+            if str(j).__contains__('Study Regulations'):
+                print('Study Regulations ' + 'https://www.inf.ovgu.de/' + j.a['href'])
+                doc.set({'Study Regulations': 'https://www.inf.ovgu.de/' + j.a['href']}, merge=True)
+            if str(j).__contains__('Examination Board'):
+                print('Examination Board ' + 'https://www.inf.ovgu.de/' + j.a['href'])
+                doc.set({'Examination Board': 'https://www.inf.ovgu.de/' + j.a['href']}, merge=True)
+            if str(j).__contains__('Examination Plans'):
+                print('Examination Plans ' + 'https://www.inf.ovgu.de/' + j.a['href'])
+                doc.set({'Examination Plans': 'https://www.inf.ovgu.de/' + j.a['href']}, merge=True)
+
+    page.close()
+
+direct_links()
+

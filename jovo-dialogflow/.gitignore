@@ -4,3 +4,5 @@ bundle/
 bundle.zip
 .env
 src/secrets/
+platforms/
+.DS_Store

@@ -43,8 +43,14 @@
       "phrases": ["Switch department", "switch departments", "change department", "change departments", "i want to change the department", "i want to change department", "i want to change departments", "i want to switch department", "i want to switch departments", "can i change department?", "can i change departments?", "can i choose another department?", "can i switch department?", "can i switch departments?"]
     },
     {
-      "name": "DeptOpenCloseIntent",
-      "phrases": ["{day}", "Is it open on {day}?", "Is it closed on {day}?"],
+      "name": "DeptOpenIntent",
+      "phrases": ["{day}", "Is it open on {day}?", "will the office be open on Wednesday?", "will the office be open on Tuesday?", "will the office be open on Monday?", "is the office open tomorrow?", "is the office open today?"],
+      "inputs": [
+      ]
+    },
+    {
+      "name": "DeptCloseIntent",
+      "phrases": ["{day}", "Is it closed on {day}?", "will the office be closed on Wednesday?", "will the office be closed on Tuesday?", "will the office be closed on Monday?", "is the office closed tomorrow?", "is the office closed today?"],
       "inputs": [
       ]
     },

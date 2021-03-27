@@ -28,6 +28,12 @@ const admin = require('firebase-admin');
 
 admin.initializeApp();
 
+// UNCOMMENT THIS TO RUN ON LOCAL MACHINE
+// admin.initializeApp({
+//   credential: admin.credential.applicationDefault(),
+//   databaseURL: 'https://digengproject01.firebaseio.com'
+// });
+
 const db = admin.firestore();
 
 app.use(
@@ -168,6 +174,25 @@ ContactFaxIntent() {
 DeptInfoIntent() {
   const deptInfo = this.$session.$data.deptData
   this.ask(`${deptInfo['working_hrs']}. Do you need more information?`);
+},
+
+DeptOpenIntent() {
+  const deptInfo = this.$session.$data.deptData
+  const weekday = {
+    0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"
+  };
+  const day = weekday[new Date(this.$inputs["date-time"].key).getDay()];
+
+  if (['Monday','Tuesday','Wednesday'].indexOf(day) === -1) {
+    this.ask(`Office is not open on ${day}. Do you need more information?`);
+  } else {
+    this.ask(`${deptInfo[day]}. Do you need more information?`);
+  }
+},
+
+DeptCloseIntent() {
+  const deptInfo = this.$session.$data.deptData
+  console.log(this.$session.$data)
 },
 
 MoreInfoYesIntent() {

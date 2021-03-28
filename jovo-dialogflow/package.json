@@ -5,13 +5,13 @@
   "main": "index.js",
   "dependencies": {
     "firebase-admin": "^9.4.2",
-    "jovo-db-filedb": "^3.3.0",
-    "jovo-db-firestore": "^3.3.0",
-    "jovo-framework": "^3.3.0",
-    "jovo-platform-alexa": "^3.3.0",
-    "jovo-platform-dialogflow": "^3.3.0",
-    "jovo-platform-googleassistant": "^3.3.0",
-    "jovo-plugin-debugger": "^3.3.0"
+    "jovo-db-filedb": "^3.5.1",
+    "jovo-db-firestore": "^3.5.1",
+    "jovo-framework": "^3.5.1",
+    "jovo-platform-alexa": "^3.5.2",
+    "jovo-platform-dialogflow": "^3.5.2",
+    "jovo-platform-googleassistant": "^3.5.2",
+    "jovo-plugin-debugger": "^3.5.1"
   },
   "devDependencies": {
     "gulp": "^4.0.2",

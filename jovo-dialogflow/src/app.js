@@ -114,10 +114,10 @@ ContactInfoIntent() {
   const deptInfo = this.$session.$data.deptData
   const responseString = `
   ${this.$session.$data.deptData['name']} Department
-  Email: ${deptInfo["emailid"]}
-  Phone: ${deptInfo["phonenumber"]}
-  Fax: ${deptInfo["fax"]}
-  Address: ${deptInfo["address"]}
+  Email: ${deptInfo["Email ID"]}
+  Phone: ${deptInfo["Tel No"]}
+  Fax: ${deptInfo["Fax No"]}
+  Address: ${deptInfo["Address"]}
 
   Do you need more information?
   `;
@@ -134,7 +134,7 @@ ContactEmailIntent() {
 
   // const deptInfo = require('./contact_info')[this.$session.$data.dept];
   const deptInfo = this.$session.$data.deptData
-  this.ask(`${this.$session.$data.deptData['name']} Department's Email id is ${deptInfo["emailid"]}`)
+  this.ask(`${this.$session.$data.deptData['name']} Department's Email id is ${deptInfo["Email ID"]}`)
 },
 
 ContactPhoneIntent() {
@@ -146,7 +146,7 @@ ContactPhoneIntent() {
   // const deptInfo = require('./contact_info')[this.$session.$data.dept];
   const deptInfo = this.$session.$data.deptData
   console.log('Document data:', deptInfo);
-  this.ask(`${this.$session.$data.deptData['name']} Department's Phone number is ${deptInfo["phonenumber"]}`)
+  this.ask(`${this.$session.$data.deptData['name']} Department's Phone number is ${deptInfo["Tel No"]}`)
 },
 
 ContactAddressIntent() {
@@ -157,7 +157,7 @@ ContactAddressIntent() {
 
   // const deptInfo = require('./contact_info')[this.$session.$data.dept];
   const deptInfo = this.$session.$data.deptData
-  this.ask(`${this.$session.$data.deptData['name']} Department's Address is ${deptInfo["address"]}`)
+  this.ask(`${this.$session.$data.deptData['name']} Department's Address is ${deptInfo["Address"]}`)
 },
 
 ContactFaxIntent() {
@@ -168,7 +168,7 @@ ContactFaxIntent() {
 
   // const deptInfo = require('./contact_info')[this.$session.$data.dept];
   const deptInfo = this.$session.$data.deptData
-  this.ask(`${this.$session.$data.deptData['name']} Department's FAX is ${deptInfo["fax"]}`)
+  this.ask(`${this.$session.$data.deptData['name']} Department's FAX is ${deptInfo["Fax No"]}`)
 },
 
 DeptInfoIntent() {
@@ -192,7 +192,16 @@ DeptOpenIntent() {
 
 DeptCloseIntent() {
   const deptInfo = this.$session.$data.deptData
-  console.log(this.$session.$data)
+  const weekday = {
+    0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"
+  };
+  const day = weekday[new Date(this.$inputs["date-time"].key).getDay()];
+
+  if (['Monday','Tuesday','Wednesday'].indexOf(day) > -1) {
+    this.ask(`No, it is open on ${day}. The timings are ${deptInfo[day]}. Do you need more information?`);
+  } else {
+    this.ask(`Yes, it is closed on ${day}. Do you need more information?`);
+  }
 },
 
 MoreInfoYesIntent() {

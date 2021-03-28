@@ -46,12 +46,24 @@
       "name": "DeptOpenIntent",
       "phrases": ["{day}", "Is it open on {day}?", "will the office be open on Wednesday?", "will the office be open on Tuesday?", "will the office be open on Monday?", "is the office open tomorrow?", "is the office open today?"],
       "inputs": [
+        {
+          "name": "date-time",
+          "type": {
+              "dialogflow": "@sys.date-time"
+          }
+      }
       ]
     },
     {
       "name": "DeptCloseIntent",
       "phrases": ["{day}", "Is it closed on {day}?", "will the office be closed on Wednesday?", "will the office be closed on Tuesday?", "will the office be closed on Monday?", "is the office closed tomorrow?", "is the office closed today?"],
       "inputs": [
+        {
+          "name": "date-time",
+          "type": {
+              "dialogflow": "@sys.date-time"
+          }
+      }
       ]
     },
     {

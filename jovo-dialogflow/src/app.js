@@ -236,6 +236,26 @@ ExamResultInfoIntent() {
   this.ask(`The results can be found on your LSF portal. After logging in with your student credentials, click on the 'Administration of Exams' tab and then choose 'Transcript of records'. Here's the link: ${deptInfo['result_link']}. Do you need more information?`);
 },
 
+ConsultationIntent() {
+  const deptInfo = this.$session.$data.deptData
+  this.ask(`${deptInfo["Personal consultation"]}`)
+},
+
+ExamRegistrationIntent() {
+  const deptInfo = this.$session.$data.deptData
+  this.ask(`Go to the following link:${deptInfo["Examination Plans"]} and you will find the required information. Alternatively, you can login to the LSF portal and click on Administration of Exams and then click on Apply for exams.`)
+},
+
+ExamInfoIntent() {
+  const deptInfo = this.$session.$data.deptData
+  this.ask(`Go to the following link:${deptInfo["Examination Plans"]} and click on Examination Plan link. Alternatively, you can login to the LSF portal and click on Administration of Exams and then click on Info on exams.`)
+},
+
+ExamBoardIntent() {
+  const deptInfo = this.$session.$data.deptData
+  this.ask(`Go to the following link:${deptInfo["Examination Board"]} to find the required information.`)
+},
+
 async DeptChangeIntent() {
   if(!this.$session.$data.dept) {
     this.$session.$data.customDeptMsg = "Please select your department first.";

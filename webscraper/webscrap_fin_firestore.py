@@ -22,14 +22,17 @@ def get_office_hours():
     # print(len(a.find_all('p')))
     for i in a.find_all('p'):
         if str(i.string).startswith('Monday'):
-            print(i.getText())
-            doc.set({'Monday': str(i.string)}, merge=True)
+            time = i.getText().partition(':')[2].strip()
+            print('Monday Working hours : ' + i.getText().partition(':')[2])
+            doc.set({'Monday': time}, merge=True)
         if str(i.string).startswith('Tuesday'):
-            print(i.getText())
-            doc.set({'Tuesday': str(i.string)}, merge=True)
+            time = i.getText().partition(':')[2].strip()
+            print('Tuesday Working hours : ' + i.getText().partition(':')[2])
+            doc.set({'Tuesday': time}, merge=True)
         if str(i.string).startswith('Wednesday'):
-            print(i.getText())
-            doc.set({'Wednesday': str(i.string)}, merge=True)
+            time = i.getText().partition(':')[2].strip()
+            print('Wednesday Working hours : ' + i.getText().partition(':')[2])
+            doc.set({'Wednesday': time}, merge=True)
     page.close()
 
 
@@ -139,7 +142,28 @@ def direct_links():
                 print('Examination Plans ' + 'https://www.inf.ovgu.de/' + j.a['href'])
                 doc.set({'Examination Plans': 'https://www.inf.ovgu.de/' + j.a['href']}, merge=True)
 
+    #addind deadlines link
+    doc.set({'Deadlines':'https://www.inf.ovgu.de/inf/en/Study/Being+a+student/Examination+Office/Examination+Plans/Deadlines.html'},merge=True)
+
     page.close()
 
 direct_links()
 
+
+def individual_forms():
+    page = open('forms_fin.html', 'r')
+    a = bs4.BeautifulSoup(page, features='lxml')
+
+    all_links = a.find_all('div', attrs={'class': 'egotec-page_frame'})
+
+    for sections in range(4):
+        links = all_links[sections].find_all('a')
+        for j in links:
+            if str(j.getText()) != 'Titel':
+                form_name = j.getText()
+                form_link = 'https://www.inf.ovgu.de/' + j['href']
+                print(form_name)
+                print(form_link)
+                doc.set({form_name:form_link}, merge=True)
+
+# individual_forms()

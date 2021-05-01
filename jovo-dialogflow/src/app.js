@@ -142,11 +142,16 @@ ContactPhoneIntent() {
     this.$session.$data.customDeptMsg = "Please select your department first.";
     return this.toIntent('HelloWorldIntent');
   }
+  const dept = this.$session.$data.dept
 
   // const deptInfo = require('./contact_info')[this.$session.$data.dept];
   const deptInfo = this.$session.$data.deptData
-  console.log('Document data:', deptInfo);
+  if(dept === "fin") {
   this.ask(`${this.$session.$data.deptData['name']} Department's Phone number is ${deptInfo["Tel No"]}`)
+  }
+  else{
+  this.ask(`${this.$session.$data.deptData['name']} Department's Phone number is ${deptInfo["Tel no."]}`)
+  }
 },
 
 ContactAddressIntent() {
@@ -154,10 +159,9 @@ ContactAddressIntent() {
     this.$session.$data.customDeptMsg = "Please select your department first.";
     return this.toIntent('HelloWorldIntent');
   }
-
   // const deptInfo = require('./contact_info')[this.$session.$data.dept];
   const deptInfo = this.$session.$data.deptData
-  this.ask(`${this.$session.$data.deptData['name']} Department's Address is ${deptInfo["Address"]}`)
+  this.ask(`${this.$session.$data.deptData['name']} Department's Address is ${deptInfo["Address"]}. Do you need more information?`)
 },
 
 ContactFaxIntent() {
@@ -165,15 +169,29 @@ ContactFaxIntent() {
     this.$session.$data.customDeptMsg = "Please select your department first.";
     return this.toIntent('HelloWorldIntent');
   }
-
-  // const deptInfo = require('./contact_info')[this.$session.$data.dept];
   const deptInfo = this.$session.$data.deptData
-  this.ask(`${this.$session.$data.deptData['name']} Department's FAX is ${deptInfo["Fax No"]}`)
+  if(dept === "fin") {
+    this.ask(`${this.$session.$data.deptData['name']} Department's FAX is ${deptInfo["Fax No"]}`)
+  }
+  else{
+    this.ask(`${this.$session.$data.deptData['name']} Department's FAX is ${deptInfo["Fax no."]}`)
+  }
+  // const deptInfo = require('./contact_info')[this.$session.$data.dept];
 },
 
 DeptInfoIntent() {
+  const dept = this.$session.$data.dept
   const deptInfo = this.$session.$data.deptData
-  this.ask(`${deptInfo['working_hrs']}. Do you need more information?`);
+  if(dept === "fin") {
+    this.ask(`Here are the Exam office hours for ${dept}.  
+                Monday: ${deptInfo["Monday"]},
+                Tuesday: ${deptInfo["Tuesday"]} and
+                Wednesday: ${deptInfo["Wednesday"]}.
+                Do you need more information?`);
+  }
+  else {
+    this.ask(`Please contact the Examination Office by telephone or Email. Personal appointments are possible for exceptional cases. Alternatively, you can visit the following link for current updates: ${deptInfo["Personal Consultation"]}. Do you need more information?`);
+  }
 },
 
 DeptOpenIntent() {
@@ -186,7 +204,7 @@ DeptOpenIntent() {
   if (['Monday','Tuesday','Wednesday'].indexOf(day) === -1) {
     this.ask(`Office is not open on ${day}. Do you need more information?`);
   } else {
-    this.ask(`${deptInfo[day]}. Do you need more information?`);
+    this.ask(`Yes, the Exam office is open on ${day}. Here are the timings: ${deptInfo[day]}. Do you need more information?`);
   }
 },
 
@@ -198,7 +216,7 @@ DeptCloseIntent() {
   const day = weekday[new Date(this.$inputs["date-time"].key).getDay()];
 
   if (['Monday','Tuesday','Wednesday'].indexOf(day) > -1) {
-    this.ask(`No, it is open on ${day}. The timings are ${deptInfo[day]}. Do you need more information?`);
+    this.ask(`No, the Exam office is open on ${day}. The timings are: ${deptInfo[day]}. Do you need more information?`);
   } else {
     this.ask(`Yes, it is closed on ${day}. Do you need more information?`);
   }
@@ -237,8 +255,14 @@ ExamResultInfoIntent() {
 },
 
 ConsultationIntent() {
+  const dept = this.$session.$data.dept
   const deptInfo = this.$session.$data.deptData
-  this.ask(`${deptInfo["Personal consultation"]}`)
+  if(dept === "fin") {
+    this.ask(`${deptInfo["Personal consultation"]}. Do you need more information?`)
+  }
+  else{
+    this.ask(`${deptInfo["Office Hour"]}. For current updates, visit the following link: ${deptInfo["Personal consultation"]}. Do you need more information?`)
+  }
 },
 
 ExamRegistrationIntent() {
@@ -248,13 +272,43 @@ ExamRegistrationIntent() {
 
 ExamInfoIntent() {
   const deptInfo = this.$session.$data.deptData
-  this.ask(`Go to the following link:${deptInfo["Examination Plans"]} and click on Examination Plan link. Alternatively, you can login to the LSF portal and click on Administration of Exams and then click on Info on exams.`)
+  this.ask(`Go to the following link:${deptInfo["Examination Plans"]} to find the exam info. Alternatively, you can login to the LSF portal and click on Administration of Exams and then click on Info on exams.`)
 },
 
 ExamBoardIntent() {
   const deptInfo = this.$session.$data.deptData
   this.ask(`Go to the following link:${deptInfo["Examination Board"]} to find the required information.`)
 },
+
+ExamFormsIntent() {
+  const deptInfo = this.$session.$data.deptData
+  this.ask(`Go to the following link:${deptInfo["Forms"]} to find the required information.`)
+},
+
+ExamDeadlineIntent() {
+  const dept = this.$session.$data.dept
+  const deptInfo = this.$session.$data.deptData
+  if(dept === "fin") {
+    this.ask(`Go to the following link:${deptInfo["Deadlines"]} to find the required information.`)
+  }
+  else{
+    return this.toIntent('Default Fallback Intent')
+  }
+},
+
+ModulesInfoIntent() {
+  const deptInfo = this.$session.$data.deptData
+  this.ask(`Go to the following link:${deptInfo["Study Regulations"]} to find the required information.`)
+},
+
+DeregistrationInfoIntent() {
+  this.ask(`Login to the LSF portal and click on Administration of Exams and then click on Apply for exams to find the deregister option. Alternatively, you can mail the examination office.`)
+},
+
+DefaultFallBackIntent() {
+  this.ask(`Sorry! I don't know that. You can contact the Examination office to know more. Would you like to know anything else?`)
+},
+
 
 async DeptChangeIntent() {
   if(!this.$session.$data.dept) {

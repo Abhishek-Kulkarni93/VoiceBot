@@ -99,6 +99,22 @@
     {
       "name": "ExamBoardIntent",
       "phrases": ["Exam Board", "examination board", "exam board members", "board members", "members of the exam board", "Who are the current members of the exam board?", "How can I contact the members of the exam board?", "I want to contact the members of the exam board", "how to contact examination board?", "how can i contact board members?", "how can i get in touch with board members?", "members", "board", "examination board members"]
+    },
+    {
+      "name": "ExamFormsIntent",
+      "phrases": ["Form", "Exam Form", "Template", "Thesis", "Project", "Internship"]
+    },
+    {
+      "name": "ExamDeadlineIntent",
+      "phrases": ["Deadline", "Repeat exam", "retake", "rewrite", "Appear again", "second time"]
+    },
+    {
+      "name": "ModulesInfoIntent",
+      "phrases": ["Modules", "credits", "subjects"]
+    },
+    {
+      "name": "DeregistrationInfoIntent",
+      "phrases": ["deregister", "cancel", "unregister"]
     }
   ],
   "alexa": {

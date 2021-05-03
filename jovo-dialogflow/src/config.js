@@ -9,6 +9,10 @@ module.exports = {
     'AMAZON.StopIntent': 'END',
   },
 
+  user: {
+    context: true,
+},
+
   db: {
     FileDb: {
       pathToFile: '../db/db.json',

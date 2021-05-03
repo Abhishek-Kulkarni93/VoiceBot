@@ -2,6 +2,15 @@
   "invocation": "my digital engineering demo",
   "intents": [
     {
+      "name": "RepeatIntent",
+      "phrases": [
+          "repeat",
+          "could you repeat that",
+          "what",
+          "say that again"
+      ]
+  },
+    {
       "name": "HelloWorldIntent",
       "phrases": ["hello", "say hello", "say hello world"]
     },
@@ -74,7 +83,7 @@
     },
     {
       "name": "MoreInfoNoIntent",
-      "phrases": ["No", "Nope", "No i don't", "Nope i don't", "Na", "Na uh", "I don't need more info"],
+      "phrases": ["No", "Nope", "No i don't", "Nope i don't", "Na", "Na uh", "I don't need more info", "bye", "goodbye", "thank you", "thanks", "that's all", "that's it", "no thank you", "no thanks", "nein", "nine"],
       "inputs": [
       ]
     },
@@ -106,11 +115,11 @@
     },
     {
       "name": "ExamDeadlineIntent",
-      "phrases": ["Deadline", "Repeat exam", "retake", "rewrite", "Appear again", "second time"]
+      "phrases": ["Deadline", "Repeat exam", "retake", "rewrite", "Appear again", "second time", "reappear", "retest", "another time", "second attempt", "another attempt", "one more time", "one more attempt"]
     },
     {
       "name": "ModulesInfoIntent",
-      "phrases": ["Modules", "credits", "subjects"]
+      "phrases": ["Modules", "credits", "subjects", "syllabus", "course content", "subject content", "subject syllabus"]
     },
     {
       "name": "DeregistrationInfoIntent",

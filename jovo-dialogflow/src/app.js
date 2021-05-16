@@ -26,14 +26,14 @@ const admin = require('firebase-admin');
 
 // const serviceAccount = require('./secrets/digengproject01-firebase-adminsdk-ci8o7-5dd170bf3e.json');
 
-// admin.initializeApp();
+admin.initializeApp();
 
 // UNCOMMENT THIS TO RUN ON LOCAL MACHINE
 // export GOOGLE_APPLICATION_CREDENTIALS="/Users/abhishekg/Voicebot/jovo-dialogflow/src/secrets/digengproject01-firebase-adminsdk-ci8o7-5dd170bf3e.json"
-admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
-  databaseURL: 'https://digengproject01.firebaseio.com'
-});
+// admin.initializeApp({
+//   credential: admin.credential.applicationDefault(),
+//   databaseURL: 'https://digengproject01.firebaseio.com'
+// });
 
 const db = admin.firestore();
 
@@ -49,6 +49,21 @@ app.use(
 // ------------------------------------------------------------------
 // APP LOGIC
 // ------------------------------------------------------------------
+
+const buildCard = function(text, buttonTitle, url) {
+  let basicCard = new BasicCard()
+  .setTitle('OvGU')
+  .setFormattedText(text)
+  .setImage({ 
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Otto_von_Guericke_Universit%C3%A4t_Magdeburg_logo.svg/2560px-Otto_von_Guericke_Universit%C3%A4t_Magdeburg_logo.svg.png', 
+      accessibilityText: 'OvGU',
+      width: 200,
+      height: 100
+  })
+  .setImageDisplay('DEFAULT') 
+  .addButton(buttonTitle, url);
+  return basicCard;
+}
 
 app.setHandler({
   LAUNCH() {
@@ -147,6 +162,7 @@ ContactFaxIntent() {
     this.$session.$data.customDeptMsg = "Please select your department first.";
     return this.toIntent('HelloWorldIntent');
   }
+  const dept = this.$session.$data.dept
   const deptInfo = this.$session.$data.deptData
   if(dept === "fin") {
     this.ask(`${this.$session.$data.deptData['name']} Department's FAX is ${deptInfo["Fax No"]}`)
@@ -173,7 +189,8 @@ DeptInfoIntent() {
   }
   else {
     this.ask(`Sorry! I don't have that information. Please contact the Examination Office by telephone (${deptInfo["Tel no."]}) or email (${deptInfo["Email ID"]}). Personal appointments are possible for exceptional cases. Alternatively, you can visit the link given below for current updates. Do you need more information?`);
-    this.$googleAction.showLinkOutSuggestion('FEIT Home', deptInfo["Personal Consultation"])
+    this.$googleAction.showBasicCard(buildCard('Click on the button below to go to FEIT Home', 'FEIT Home', deptInfo['Personal Consultation']));
+    // this.$googleAction.showLinkOutSuggestion('FEIT Home', deptInfo["Personal Consultation"])
   }
 },
 
@@ -197,7 +214,8 @@ DeptOpenIntent() {
     }
   } else {
     this.ask(`Sorry! I don't have that information. Please contact the Examination Office by telephone (${deptInfo["Tel no."]}) or email (${deptInfo["Email ID"]}). Personal appointments are possible for exceptional cases. Alternatively, you can visit the link given below for current updates. Do you need more information?`);
-    this.$googleAction.showLinkOutSuggestion('FEIT Home', deptInfo["Personal Consultation"])
+    this.$googleAction.showBasicCard(buildCard('Click on the button below to go to FEIT Home', 'FEIT Home', deptInfo['Personal Consultation']));
+    // this.$googleAction.showLinkOutSuggestion('FEIT Home', deptInfo["Personal Consultation"])
   }
 },
 
@@ -221,7 +239,8 @@ DeptCloseIntent() {
     }
   } else {
     this.ask(`Sorry! I don't have that information. Please contact the Examination Office by telephone (${deptInfo["Tel no."]}) or email (${deptInfo["Email ID"]}). Personal appointments are possible for exceptional cases. Alternatively, you can visit the link given below for current updates. Do you need more information?`);
-    this.$googleAction.showLinkOutSuggestion('FEIT Home', deptInfo["Personal Consultation"])
+    this.$googleAction.showBasicCard(buildCard('Click on the button below to go to FEIT Home', 'FEIT Home', deptInfo['Personal Consultation']));
+    // this.$googleAction.showLinkOutSuggestion('FEIT Home', deptInfo["Personal Consultation"])
   }
 },
 
@@ -261,7 +280,8 @@ ExamResultInfoIntent() {
   }
   const deptInfo = this.$session.$data.deptData
   this.ask(`The results can be found on your LSF portal. After logging in with your student credentials, click on the 'Administration of Exams' tab and then choose 'Transcript of records'. Find the link below. Do you need more information?`);
-  this.$googleAction.showLinkOutSuggestion('LSF Portal', deptInfo['result_link'])
+  this.$googleAction.showBasicCard(buildCard('Click on the button below to go to LSF Portal', 'LSF Portal', deptInfo['result_link']));
+  // this.$googleAction.showLinkOutSuggestion('LSF Portal', deptInfo['result_link'])
 },
 
 ConsultationIntent() {
@@ -273,11 +293,13 @@ ConsultationIntent() {
   const deptInfo = this.$session.$data.deptData
   if(dept === "fin") {
     this.ask(`Personal consultation is only possible with prior appointment via online calendar. Go to the below link to schedule an appointment. Do you need more information?`)
-    this.$googleAction.showLinkOutSuggestion('Book Appointment for Personal Consultation', deptInfo["Personal consultation"])
+    this.$googleAction.showBasicCard(buildCard('Click on the button below to go to schedule an appointment', 'Schedule Appointment', deptInfo['Personal Consultation']));
+    // this.$googleAction.showLinkOutSuggestion('Book Appointment for Personal Consultation', deptInfo["Personal consultation"])
   }
   else{
     this.ask(`Please contact the Examination Office by telephone (${deptInfo["Tel no."]}) or email (${deptInfo["Email ID"]}). Personal appointments are possible for exceptional cases. Alternatively, you can visit the link given below for current updates. Do you need more information?`);
-    this.$googleAction.showLinkOutSuggestion('FEIT Home', deptInfo["Personal Consultation"])
+    this.$googleAction.showBasicCard(buildCard('Click on the button below to go to FEIT Home', 'FEIT Home', deptInfo['Personal Consultation']));
+    // this.$googleAction.showLinkOutSuggestion('FEIT Home', deptInfo["Personal Consultation"])
   }
 },
 
@@ -288,7 +310,8 @@ ExamRegistrationIntent() {
   }
   const deptInfo = this.$session.$data.deptData
   this.ask(`You can get the required information from the link provided below. Alternatively, you can login via LSF Portal, go to Administration of Exams and then click on Apply for Exams.`)
-  this.$googleAction.showLinkOutSuggestion('Examination Registration', deptInfo["Examination Plans"])
+  this.$googleAction.showBasicCard(buildCard('Click on the button below to know about exam registration period', 'Exam Registration', deptInfo['Examination Plans']));
+  // this.$googleAction.showLinkOutSuggestion('Examination Registration', deptInfo["Examination Plans"])
 },
 
 ExamInfoIntent() {
@@ -298,7 +321,8 @@ ExamInfoIntent() {
   }
   const deptInfo = this.$session.$data.deptData
   this.ask(`Go to the link below to find the exam info. Alternatively, you can login to the LSF portal and click on Administration of Exams and then click on Info on Exams.`)
-  this.$googleAction.showLinkOutSuggestion('Examination Plans', deptInfo["Examination Plans"])
+  this.$googleAction.showBasicCard(buildCard('Click on the button below to know about examination details', 'Exam Information', deptInfo['Examination Plans']));
+  // this.$googleAction.showLinkOutSuggestion('Examination Plans', deptInfo["Examination Plans"])
 },
 
 ExamBoardIntent() {
@@ -308,7 +332,8 @@ ExamBoardIntent() {
   }
   const deptInfo = this.$session.$data.deptData
   this.ask(`You can get the information about the Examination Board in the link below.`)
-  this.$googleAction.showLinkOutSuggestion('Examination Board', deptInfo["Examination Board"])
+  this.$googleAction.showBasicCard(buildCard('Click on the button below to know about examination board', 'Exam Board', deptInfo['Examination Board']));
+  // this.$googleAction.showLinkOutSuggestion('Examination Board', deptInfo["Examination Board"])
 },
 
 ExamFormsIntent() {
@@ -318,7 +343,8 @@ ExamFormsIntent() {
   }
   const deptInfo = this.$session.$data.deptData
   this.ask(`To get the information on all forms related to Exams, Thesis, Projects, Internships etc, visit the below link.`)
-  this.$googleAction.showLinkOutSuggestion('Forms', deptInfo["Forms"])
+  this.$googleAction.showBasicCard(buildCard('Click on the button below to know about forms', 'Forms', deptInfo['Forms']));
+  // this.$googleAction.showLinkOutSuggestion('Forms', deptInfo["Forms"])
 },
 
 ExamDeadlineIntent() {
@@ -330,7 +356,8 @@ ExamDeadlineIntent() {
   const deptInfo = this.$session.$data.deptData
   if(dept === "fin") {
     this.ask(`Deadlines or repeat attempts information related to the exams can be found on the link provided below.`)
-    this.$googleAction.showLinkOutSuggestion('Exam Deadlines', deptInfo["Deadlines"])
+    this.$googleAction.showBasicCard(buildCard('Click on the button below to know about exam deadlines', 'Exam Deadlines', deptInfo['Deadlines']));
+    // this.$googleAction.showLinkOutSuggestion('Exam Deadlines', deptInfo["Deadlines"])
   }
   else{
     this.ask(`Sorry! I don't have information on this. You can contact the FEIT Examination office via email (${deptInfo["Email ID"]}) or telephone (${deptInfo["Tel no."]}) to know more. Would you like to know anything else?`)
@@ -344,7 +371,8 @@ ModulesInfoIntent() {
   }
   const deptInfo = this.$session.$data.deptData
   this.ask(`Information related to the course content modules can be found on the link provided below. Click on the link that is applicable to your Study Program.`)
-  this.$googleAction.showLinkOutSuggestion('Course Content Info', deptInfo["Study Regulations"])
+  this.$googleAction.showBasicCard(buildCard('Click on the button below to know about study programs', 'Course Content Info', deptInfo['Study Regulations']));
+  // this.$googleAction.showLinkOutSuggestion('Course Content Info', deptInfo["Study Regulations"])
 },
 
 DeregistrationInfoIntent() {

@@ -16,11 +16,11 @@
     },
     {
       "name": "FinDeptIntent",
-      "phrases": ["FIN", "finn", "Computer Science", "Informatics", "Informatic", "Computers"]
+      "phrases": ["FIN", "finn", "Computer Science", "Informatics", "Informatic", "Computers", "f i n", "Faculty of Computer Science"]
     },
     {
       "name": "FeitDeptIntent",
-      "phrases": ["FEIT", "fight", "Electronics", "Electricals", "Electric"]
+      "phrases": ["FEIT", "fight", "Electronics", "Electricals", "Electric", "f e i t", "FACULTY OF ELECTRICAL ENGINEERING AND INFORMATION TECHNOLOGY"]
     },
     {
       "name": "DeptInfoIntent",

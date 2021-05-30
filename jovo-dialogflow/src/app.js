@@ -204,7 +204,11 @@ DeptOpenIntent() {
   const weekday = {
     0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"
   };
-  const day = weekday[new Date(this.$inputs["date-time"].key).getDay()];
+
+  let day = weekday[new Date().getDay()];
+  if(this.$inputs["date-time"] && this.$inputs["date-time"].key) {
+     day = weekday[new Date(this.$inputs["date-time"].key).getDay()];
+  }
 
   if(dept === "fin") {
     if (['Monday','Tuesday','Wednesday'].indexOf(day) === -1) {
@@ -229,7 +233,11 @@ DeptCloseIntent() {
   const weekday = {
     0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"
   };
-  const day = weekday[new Date(this.$inputs["date-time"].key).getDay()];
+
+  let day = weekday[new Date().getDay()];
+  if(this.$inputs["date-time"] && this.$inputs["date-time"].key) {
+     day = weekday[new Date(this.$inputs["date-time"].key).getDay()];
+  }
 
   if(dept === "fin") {
     if (['Monday','Tuesday','Wednesday'].indexOf(day) > -1) {
@@ -242,6 +250,14 @@ DeptCloseIntent() {
     this.$googleAction.showBasicCard(buildCard('Click on the button below to go to FEIT Home', 'FEIT Home', deptInfo['Personal Consultation']));
     // this.$googleAction.showLinkOutSuggestion('FEIT Home', deptInfo["Personal Consultation"])
   }
+},
+
+ContactInfoIntent() {
+  if(!this.$session.$data.dept) {
+    this.$session.$data.customDeptMsg = "Please select your department first.";
+    return this.toIntent('HelloWorldIntent');
+  }
+  return this.toIntent('MoreInfoYesIntent');
 },
 
 MoreInfoYesIntent() {
@@ -271,6 +287,15 @@ MoreInfoYesIntent() {
 
     this.$googleAction.showList(list);
   this.ask('What information do you need?') 
+},
+
+MappingSubjectsIntent() {
+  if(!this.$session.$data.dept) {
+    this.$session.$data.customDeptMsg = "Please select your department first.";
+    return this.toIntent('HelloWorldIntent');
+  }
+  const deptInfo = this.$session.$data.deptData
+  this.ask(`Remapping of the subjects or modules can only be done by the examination department faculty. Please drop an email to them with all the required information. Here's the Email ID: ${deptInfo["Email ID"]}`)
 },
 
 ExamResultInfoIntent() {

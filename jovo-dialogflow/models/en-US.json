@@ -45,7 +45,7 @@
     },
     {
       "name": "ContactAddressIntent",
-      "phrases": ["Address", "what is their address?", "where are they located?", "location", "what is their mailing address?", "office", "office location", "office address", "what is their office address?", "where is their office?", "i want to go to their office", "physical location", "I want to visit them", "visit", "where can i visit them"]
+      "phrases": ["Address", "what is their address?", "where are they located?", "location", "what is their mailing address?", "office", "office location", "office address", "what is their office address?", "where is their office?", "i want to go to their office", "physical location", "I want to visit them", "visit", "where can i visit them", "exam cell", "cell", "where is the exam cell located?", "what is the address of the exam cell?", "exam office", "where is the exam office located?", "what is the address of the exam office?", "what is the location of the exam department?", "where is the exam department located?", "location of the exam department", "address of the exam department", "address of exam cell", "location of the exam cell", "what is the address of the exam department", "exam department building", "where is the exam department building located?", "where can i find the exam department building?", "address of the exam department building", "location of the exam department building", "building address", "building location", "department address", "department location", "visit exam cell", "visit exam department", "i want to visit the exam cell", "i want to visit the exam department", "i want to go to the exam cell", "i want to go to the exam department", "go to exam cell", "go to exam department", "Examination cell location"] 
     },
     {
       "name": "DeptChangeIntent",
@@ -89,13 +89,11 @@
     },
     {
       "name": "ExamResultInfoIntent",
-      "phrases": ["Exam results", "results", "grades", "Where will the exam results be posted?", "where can i find my exam results?", "what is the link for exam results?", "my results", "my score", "how can i check my result?", "link to exam results", "where can i see my results?", "where can i see my exam results?", "where can i see my score?", "where can i find my grades?", "how can i check my grades?", "my grades", "are the results announced?"]
+      "phrases": ["Exam results", "results", "grades", "Where will the exam results be posted?", "where can i find my exam results?", "what is the link for exam results?", "my results", "my score", "how can i check my result?", "link to exam results", "where can i see my results?", "where can i see my exam results?", "where can i see my score?", "where can i find my grades?", "how can i check my grades?", "my grades", "are the results announced?", "when can i expect the results?", "When will the exam results be posted?"]
     },
     {
       "name": "ConsultationIntent",
-      "phrases": ["Appointment", "Consultation", "consult", "schedule", "schedule appointment for exam office", "when can i schedule an appointment for exam office?", "how can i schedule an appointment for exam office?", "where can i schedule an appointment for exam office?", "do i need to schedule an appointment for exam office?", "how can i consult with exam office?", "where can i consult with exam office?", "when can i consult with exam office?", "book appointment", "where can i book an appointment with exam office?", "when can i book an appointment with exam office?", "how can i book an appointment with exam office?"],
-      "inputs": [
-      ]
+      "phrases": ["Appointment", "Consultation", "consult", "schedule", "schedule appointment for exam office", "when can i schedule an appointment for exam office?", "how can i schedule an appointment for exam office?", "where can i schedule an appointment for exam office?", "do i need to schedule an appointment for exam office?", "how can i consult with exam office?", "where can i consult with exam office?", "when can i consult with exam office?", "book appointment", "where can i book an appointment with exam office?", "when can i book an appointment with exam office?", "how can i book an appointment with exam office?", "When can I meet an official from examination office?"]
     },
     {
       "name": "ExamRegistrationIntent",
@@ -111,19 +109,23 @@
     },
     {
       "name": "ExamFormsIntent",
-      "phrases": ["Form", "Exam Form", "Template", "Thesis", "Project", "Internship"]
+      "phrases": ["Form", "Exam Form", "Template form", "Thesis form", "Project form", "Internship form", "where can i find the exam form?", "where can i find the exam template?", "where can i find the thesis form", "thesis form", "how can i find the thesis form?", "where is the thesis form", "where can i find the project form?", "where is the project form?", "how can i find the project form?", "where can i find the internship form?", "how can i find the internship form?", "where is the internship form?", "find the form", "How can I register for thesis?"]
+    },
+    {
+      "name": "MappingSubjectsIntent",
+      "phrases": ["Map", "Mapping", "Map subjects", "Mapping subjects", "Map modules", "Mapping modules", "changing the subjects", "changing the modules", "remap", "remapping", "remap subjects", "remapping subjects", "remap modules", "remapping modules", "i want to remap my subjects", "i want to remap my modules", "how can i remap the subjects?", "how can i remap the modules?", "can i remap the subjects?", "can i remap the modules?", "where can i find information about remapping the subjects?", "where can i find information about remapping the modules?", "am i allowed to remap the subjects?", "am i allowed to remap the modules?", "i want to change the subjects", "i want to change the modules for an exam", "change subjects", "change modules", "I want to change subject mapping in my transcript", "Can the subject in other module be mapped in the another module?"]
     },
     {
       "name": "ExamDeadlineIntent",
-      "phrases": ["Deadline", "Repeat exam", "retake", "rewrite", "Appear again", "second time", "reappear", "retest", "another time", "second attempt", "another attempt", "one more time", "one more attempt"]
+      "phrases": ["Deadline", "Repeat exam", "retake", "rewrite", "Appear again", "second time", "reappear", "retest", "another time", "second attempt", "another attempt", "one more time", "one more attempt", "what are the deadlines if i fail an exam?","exam fail", "failed exam", "fail", "retaking the exam", "reapplying for the exam", "how many times can i write an exam?", "how many attempts are allowed for an exam?", "i have a failed an exam", "what can i do if i fail an exam?", "how many times can i retake an exam?", "how many times can i rewrite an exam?", "i have failed an exam twice", "what are the deadlines for repeating an exam", "repeat an exam", "how many times can i repeat an exam?", "how can i retake an exam?", "when can i retake an exam?", "how can i apply for a repeat exam?", "can i retake an exam?", "can i rewrite an exam?", "can i take an exam again?", "can i appear for an exam again?", "can i appear for an exam after failing?", "can i reapply for an exam after failing it?", "i failed an exam, can i reapply?", "What happens if I fail exam in this semester?", "What are the deadlines if we have failed an exam?"]
     },
     {
       "name": "ModulesInfoIntent",
-      "phrases": ["Modules", "credits", "subjects", "syllabus", "course content", "subject content", "subject syllabus"]
+      "phrases": ["Modules", "credits", "subjects", "syllabus", "course content", "subject content", "subject syllabus", "what are the modules?", "what are the mandatory modules?", "what are the subjects?", "what are the mandatory subjects?", "where can i find the modules information?", "where can i find the subjects information?", "i want to know the modules", "i want to know the subjects", "what are the different modules?", "what are the different subjects?", "where can i find the syllabus?", "where can i find the course content?", "where can i find the subject content?", "what is the syllabus?", "what is the course content?", "what is the subject content?", "i want to know the syl;abus", "i want to know the course content", "i want to know the subject content", "where can i get the information about course content?", "where can i get syllabus information?", "where can i get modules information?", "where can i get subjects information?", "how many credits are required to qualify for thesis?", "qualify for thesis", "i have finished credits, can i apply for thesis?", "eligible for thesis", "apply for thesis", "What are the module list for", "where are the module list for", "module list", "subject list", "syllabus list", "course list", "credits needed to register for thesis"]
     },
     {
       "name": "DeregistrationInfoIntent",
-      "phrases": ["deregister", "cancel", "unregister"]
+      "phrases": ["deregister", "cancel", "unregister", "within what time period should i de-register for an exam?", "i want to deregister from an exam", "i want to cancel from an exam", "cancel exam", "deregister exam", "i want to unregister from an exam", "unregister exam", "i don't want to write an exam, can i withdraw?", "withdraw", "withdraw exam", "withdraw from an exam", " can i cancel exam an registration?", "how can i withdraw from an exam?", "how can i cancel my exam registration?", "where can i deregister from an exam?", "where can i cancel my exam?", "where can i withdraw from an exam?", "deregister from an exam", "How can I de-register an exam?"]
     }
   ],
   "alexa": {

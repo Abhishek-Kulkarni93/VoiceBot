@@ -93,11 +93,11 @@
     },
     {
       "name": "ConsultationIntent",
-      "phrases": ["Appointment", "Consultation", "consult", "schedule", "schedule appointment for exam office", "when can i schedule an appointment for exam office?", "how can i schedule an appointment for exam office?", "where can i schedule an appointment for exam office?", "do i need to schedule an appointment for exam office?", "how can i consult with exam office?", "where can i consult with exam office?", "when can i consult with exam office?", "book appointment", "where can i book an appointment with exam office?", "when can i book an appointment with exam office?", "how can i book an appointment with exam office?", "When can I meet an official from examination office?"]
+      "phrases": ["Appointment", "Consultation", "consult", "schedule", "schedule appointment for exam office", "when can i schedule an appointment for exam office?", "how can i schedule an appointment for exam office?", "where can i schedule an appointment for exam office?", "do i need to schedule an appointment for exam office?", "how can i consult with exam office?", "where can i consult with exam office?", "when can i consult with exam office?", "book appointment", "where can i book an appointment with exam office?", "when can i book an appointment with exam office?", "how can i book an appointment with exam office?", "When can I meet an official from examination office?", "visit the office in person", "visit the office personally", "when can i visit the office in person?", "when can i visit the office personally?", "i want to visit the office in person", "i want to visit the office personally"]
     },
     {
       "name": "ExamRegistrationIntent",
-      "phrases": ["Exam registration", "registration", "apply for exams", "registration period?", "exam registration period", "what is the time period for exam registration?", "what is the registration period for the exams?", "when can i register for the exams?", "when will the exams be held?", "when does exam registration start?", "exam registration opening date", "exam registration closing date",  "sign up for exams", "when can i sign up for exams?"]
+      "phrases": ["Exam registration", "registration", "apply for exams", "registration period?", "exam registration period", "what is the time period for exam registration?", "what is the registration period for the exams?", "when can i register for the exams?", "when will the exams be held?", "when does exam registration start?", "exam registration opening date", "exam registration closing date",  "sign up for exams", "when can i sign up for exams?", "exam schedule", "exam plan", "is the exam schedule out?", "is the exam plan out?"]
     },
     {
       "name": "ExamInfoIntent",
